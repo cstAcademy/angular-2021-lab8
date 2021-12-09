@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{isOnEdit ? 'Edit' : 'Add'}} element</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="chemicalForm">
+        <mat-form-field>
+            <input matInput [readonly]="isOnEdit" placeholder="Position" formControlName="position">
+            <mat-error>This field is required accepted</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error>At least three characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Weight" formControlName="weight">
+            <mat-error>This field is required accepted</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Symbol" formControlName="symbol">
+        </mat-form-field>
+    </form>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button [mat-dialog-close]="chemicalForm" [disabled]= "chemicalForm.invalid" cdkFocusInitial>Ok</button>
+    </div>
